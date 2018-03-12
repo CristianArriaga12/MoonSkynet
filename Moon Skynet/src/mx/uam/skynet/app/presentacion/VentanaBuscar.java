@@ -1,11 +1,15 @@
 package mx.uam.skynet.app.presentacion;
 
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import mx.uam.skynet.app.negocio.Historial_clinico;
 import mx.uam.skynet.app.persistencia.ConnectDB;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -66,7 +70,7 @@ public class VentanaBuscar extends JFrame {
 	public VentanaBuscar() {
 		setTitle("Busqueda de Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 527, 356);
+		setBounds(100, 100, 650, 356);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -78,6 +82,8 @@ public class VentanaBuscar extends JFrame {
 				 ConnectDB conexion = new ConnectDB();
 					try {
 						conexion.buscaClienteEspecifico(folioTF.getText());
+						System.out.println("Foliotf:"+ folioTF.getText());
+						System.out.println("Foliodb "+ folioDB);
 						nombreTF.setText(ConnectDB.getNombre());
 						System.out.println(ConnectDB.getNombre());
 						apellidoTF.setText(ConnectDB.getApellido());
@@ -146,11 +152,42 @@ public class VentanaBuscar extends JFrame {
 		
 		JButton botonCancelar= new JButton("Cancelar");
 		
+		
+		
 		botonCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 			}
 		});
+		
+//		Creacion de un boton para buscar el historial clinico del paciente encontrado
+		JButton botonHistorial = new JButton("Historial Cl\u00ednico");
+		botonHistorial.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try{
+					Historial_clinico ventanaHistorial = new Historial_clinico();
+					ventanaHistorial.setVisible(true);
+					ventanaHistorial.setTitle("Historial Cl\u00ednico");
+					ventanaHistorial.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+					int height = screen.height;
+					int width = screen.width;
+					ventanaHistorial.setLocation(50, 50);
+					ventanaHistorial.setSize(width-100, height-100);
+					ventanaHistorial.setResizable(false);
+					VentanaBuscar.this.dispose();
+					
+				}
+				catch(Exception e1){
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
 		
 		
 		
@@ -189,7 +226,11 @@ public class VentanaBuscar extends JFrame {
 									.addComponent(botonBuscaCliente)
 									.addGap(18)
 									.addComponent(botonCancelar)
-									.addGap(43))))
+									.addGap(43)
+									.addComponent(botonHistorial)
+									.addGap(30)
+									)))
+									
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(112)
 							.addComponent(lblNombre)
@@ -220,7 +261,8 @@ public class VentanaBuscar extends JFrame {
 						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 								.addComponent(botonBuscaCliente, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-								.addComponent(botonCancelar, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+								.addComponent(botonCancelar, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+								.addComponent(botonHistorial,GroupLayout.DEFAULT_SIZE,51, Short.MAX_VALUE))
 							.addGap(18)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNombre)

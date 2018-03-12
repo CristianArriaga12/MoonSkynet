@@ -2,7 +2,6 @@ package mx.uam.skynet.app.negocio;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-
 import javax.swing.JFrame;
 
 /**
@@ -45,6 +44,9 @@ public class Historial_clinico extends JFrame {
         label2 = new java.awt.Label();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        bagregarcita = new javax.swing.JButton();
+        bposponercita = new javax.swing.JButton();
+        bcancelarcita = new javax.swing.JButton();
 
         label3.setAlignment(java.awt.Label.CENTER);
         label3.setFont(new java.awt.Font("Arabic Typesetting", 0, 48)); // NOI18N
@@ -110,14 +112,13 @@ public class Historial_clinico extends JFrame {
         jLabel1.setText("Query");
         panel1.add(jLabel1);
         jLabel1.setBounds(580, 100, 550, 30);
+        
+        bagregarcita.setText("AGREGAR CITA");
+        panel1.add(bagregarcita);
+        bagregarcita.setBounds((windowx/5), windowy-150, 140, 30);
 
         jButton1.setText("VOLVER");
         panel1.add(jButton1);
-//        System.out.println("SCREEN DIMMENSION"+ x+ " "+y);
-//        System.out.println("WINDOW DIMMENSION "+ windowx/2+" "+(windowy-60));
-        
-        
-        
         jButton1.setBounds((windowx/2)-80 ,windowy-100 , 140, 30);
 
         getContentPane().add(panel1);
@@ -171,5 +172,9 @@ public class Historial_clinico extends JFrame {
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Panel panel1;
+    private javax.swing.JButton bagregarcita;
+    private javax.swing.JButton bposponercita;
+    private javax.swing.JButton bcancelarcita;
+    
     // End of variables declaration//GEN-END:variables
 }

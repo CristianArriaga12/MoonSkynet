@@ -2,8 +2,6 @@ package mx.uam.skynet.app.presentacion;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -14,6 +12,19 @@ import javax.swing.JButton;
 
 public class CitasDeHoy extends JFrame implements ActionListener {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+
+
+
+
+
+
+
 	public CitasDeHoy()
 	{
 		this.setTitle("Citas Programadas para hoy");                   
